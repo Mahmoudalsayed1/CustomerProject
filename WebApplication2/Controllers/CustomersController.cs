@@ -11,8 +11,16 @@ namespace WebApplication2.Controllers
         [HttpGet]
         public IActionResult Create(Customer customerDtls)
         {
-            ViewData["Title"] = "Customer Details";
-            return PartialView("_Create", customerDtls);
+            if(customerDtls.CustomerId == Guid.Empty)
+            {
+                ViewData["Title"] = "Create Customer";
+                return PartialView("_Create", customerDtls);
+            }
+            else
+            {
+                ViewData["Title"] = "Update Customer";
+                return PartialView("_Create", customerDtls);
+            }
         }
         [HttpPost]
         public IActionResult CreateCustomer(Customer customer)
@@ -34,7 +42,7 @@ namespace WebApplication2.Controllers
                     existingCustomer.Height = customer.Height;
                 }
             }
-            ViewData["Title"] = "Customer Details";
+            ViewData["Title"] = "Create Customer";
             return RedirectToAction("Index");
         }
         public IActionResult Index(MergeCustomer mergeCustomer)
@@ -55,7 +63,7 @@ namespace WebApplication2.Controllers
         }
         public IActionResult Edit(Guid Id)
         {
-            ViewData["Title"] = "Customer Details";
+            ViewData["Title"] = "Update Customer";
             if (Id == Guid.Empty)
             {
                 return RedirectToAction("Index");

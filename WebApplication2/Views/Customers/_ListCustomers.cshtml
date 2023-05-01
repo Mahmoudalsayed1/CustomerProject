@@ -29,10 +29,10 @@
             {
                 <tr>
                     <td>
-                        <input type="radio" class="form-check-input" name="selectedIds" value="@values.ListCustomerId" onclick="toggleButton(this)" />
+                        <input type="radio" class="form-check-input" name="selectedIds" value="@values.ListCustomerId" onchange="enableEditButton(this)" />
                     </td>
                     <td>
-                        <a href="@Url.Action("Edit", new { Id = values.ListCustomerId })" class="btn btn-warning btn-sm edit-button" disabled>Edit</a>
+                        <a href="@Url.Action("Edit", new { Id = values.ListCustomerId })" class="btn btn-warning btn-sm edit-button disabled">Edit</a>
                     </td>
                     <td>
                         @values.ListName
@@ -52,3 +52,23 @@
         </tbody>
     </table>
 </div>
+
+<script>
+    function enableEditButton(radio) {
+        var editButton = $(radio).closest('tr').find('.edit-button');
+        if ($(radio).is(':checked')) {
+            $('input[name="selectedIds"]:not(:checked)').closest('tr').find('.edit-button').addClass('disabled');
+            editButton.removeClass('disabled');
+        } else {
+            editButton.addClass('disabled');
+        }
+    }
+</script>
+
+
+
+
+
+
+
+
