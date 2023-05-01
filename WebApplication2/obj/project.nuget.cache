@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kvCdHedUZ0SgVY7BMnSdTr00rMQgqiv+Ib01Owa7PbNuEUhdGLZZO7Ylq+TQvMsieB14AfTgKalwklduW+YW0g==",
+  "dgSpecHash": "BcjiWm/mwfwjh3GaQCPVAgp/10uQiq3+r0MTK+1ubEU8IdbHQrPb6eOi3kFQA1g7e0X0e0glHHpNyGVj/Mrj9w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\matth\\source\\repos\\WebApplication2\\WebApplication2\\Customerproject.csproj",
+  "projectFilePath": "C:\\Users\\matth\\source\\repos\\Customerrepo\\WebApplication2\\Customerproject.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

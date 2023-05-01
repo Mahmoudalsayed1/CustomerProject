@@ -9,14 +9,14 @@
     </h3>
 </div>
 <div class="card mb-3 mt-2">
-<h5 class="card-header text-center">
-    <input type="button" value="Add Customer" class="btn btn-primary shadow" onclick="AddCustomer()" />
-</h5>
+    <h5 class="card-header text-center">
+        <input type="button" value="Add Customer" class="btn btn-primary shadow" onclick="AddCustomer()" />
+    </h5>
 </div>
 @if (Model.Customer.CustomerId == Guid.Empty)
 {
-    <div id="_Create" class="card-body" style="display:none;">
-        <partial name="_Create" model="Model.Customer"/>
+    <div id="_Create">
+        <partial name="_Create" model="Model.Customer" />
 
     </div>
 }
@@ -27,23 +27,37 @@ else
 
     </div>
 }
-    <div id="ListCustomers">
-        <partial name="_ListCustomers" model="Model.ListCustomers" />
-    </div>
+<div id="ListCustomers">
+    <partial name="_ListCustomers" model="Model.ListCustomers" />
+</div>
 
 <script type="text/javascript">
-        $('#_Create').hide();
-        function AddCustomer() {
-            $.ajax({
-                type:'GET',
-                url: '@Url.Action("Create","Customers")',
-            
-                success: function (response) {
-                    $('#_Create').html(response);
-                    $('#_Create').show();
-                }
-            }
-
-            )
+    if ('@Model.Customer.CustomerId' !== '00000000-0000-0000-0000-000000000000') {
+        setTimeout(function () {
+            AddCustomer();
+        }, 500);
+    }
+    function AddCustomer() {
+        var customer = {
+            CustomerId: "@Model.Customer.CustomerId",
+            Name: "@Model.Customer.Name",
+            Age: "@Model.Customer.Age",
+            PostCode: "@Model.Customer.PostCode",
+            Height: "@Model.Customer.Height",
         }
-    </script>
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("Create","Customers")',
+            data: customer,
+            success: function (response) {
+                $('#_Create').html(response);
+                $('#_Create').show();
+                $("#CustomerModel").modal('show');
+            }
+        }
+
+        )
+    }
+
+
+</script>

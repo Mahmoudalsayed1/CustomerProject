@@ -9,10 +9,10 @@ namespace WebApplication2.Controllers
         //public static List<Customer> customers= new List<Customer>();
 
         [HttpGet]
-        public IActionResult Create()
+        public IActionResult Create(Customer customerDtls)
         {
             ViewData["Title"] = "Customer Details";
-            return PartialView("_Create");
+            return PartialView("_Create", customerDtls);
         }
         [HttpPost]
         public IActionResult CreateCustomer(Customer customer)

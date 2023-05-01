@@ -1,54 +1,54 @@
 ﻿@model List<WebApplication2.Models.ListCustomers>
 <div>
-        <table class="table shadow rounded table-hover">
-            <thead class="text-center">
-                <tr class="table-primary">
+    <table class="table shadow rounded table-hover">
+        <thead class="text-center">
+            <tr class="table-primary">
                 <th>
-                    
-                </th>
-                    <th>
-                        Action
-                    </th>
-                    <th>
-                        Name
-                    </th>
-                    <th>
-                        Age
-                    </th>
-                    <th>
-                        Post Code
-                    </th>
-                    <th>
-                        Height
-                    </th>
-                </tr>
-               
-            </thead>
-            <tbody class="text-center">
-                @foreach(var values in Model)
-                {
-                <tr class="selectable-row">
-                    <td>
-                        <input type="checkbox" name="selectedIds" value="@values.ListCustomerId" onclick="toggleButton(this)" />
-                    </td>
-                        <td>
-                        <a href="@Url.Action("Edit", new { Id = values.ListCustomerId })" class="btn btn-warning btn-sm">Edit</a>
-                        </td>
-                        <td>
-                            @values.ListName
-                        </td>
-                        <td>
-                            @values.ListAge
-                        </td>
-                        <td>
-                            @values.ListPostCode
-                        </td>
-                        <td>
-                            @values.ListHeight
-                        </td>
-                    </tr>
-                }
 
-            </tbody>
-        </table>
+                </th>
+                <th>
+                    Action
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Age
+                </th>
+                <th>
+                    Post Code
+                </th>
+                <th>
+                    Height
+                </th>
+            </tr>
+
+        </thead>
+        <tbody class="text-center">
+            @foreach (var values in Model)
+            {
+                <tr>
+                    <td>
+                        <input type="radio" class="form-check-input" name="selectedIds" value="@values.ListCustomerId" onclick="toggleButton(this)" />
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Edit", new { Id = values.ListCustomerId })" class="btn btn-warning btn-sm edit-button" disabled>Edit</a>
+                    </td>
+                    <td>
+                        @values.ListName
+                    </td>
+                    <td>
+                        @values.ListAge
+                    </td>
+                    <td>
+                        @values.ListPostCode
+                    </td>
+                    <td>
+                        @values.ListHeight
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
 </div>
